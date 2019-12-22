@@ -5,15 +5,18 @@ import { AppController } from './app.controller';
 import { AppService } from './app.service';
 
 import { TodoModule } from './modules/Todo/Todo.module';
+import { CardModule } from './modules/Card/Card.module';
 
 @Module({
   imports: [
     TypegooseModule.forRoot('mongodb://localhost:27017/nest', {
       useNewUrlParser: true
     }),
-    TodoModule
+    TodoModule,
+    CardModule
   ],
   controllers: [AppController],
   providers: [AppService],
 })
+
 export class AppModule {}

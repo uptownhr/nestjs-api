@@ -28,6 +28,12 @@ describe('AppController (e2e)', () => {
       .expect(200);
   });
 
+  it('/cards (GET)', () => {
+    return request(app.getHttpServer())
+      .get('/cards')
+      .expect(200);
+  });
+
   afterAll(async () => {
     await app.close();
   });
