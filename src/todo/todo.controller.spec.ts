@@ -1,8 +1,8 @@
 import { Test, TestingModule } from '@nestjs/testing';
-import { TodoController } from './Todo.controller';
-import { TodoService } from './Todo.service';
+import { TodoController } from './todo.controller';
+import { TodoService } from './todo.service';
 import { TypegooseModule } from 'nestjs-typegoose';
-import { Todo } from './Todo.model';
+import { Todo } from './todo.model';
 import { MongoMemoryServer } from 'mongodb-memory-server';
 
 describe('TodoController', () => {
@@ -33,7 +33,7 @@ describe('TodoController', () => {
   }, 20000);
 
   describe('create', () => {
-    it('should create a Todo', async () => {
+    it('should create a todo', async () => {
       const todo = {
         name: 'did you get this?',
       };

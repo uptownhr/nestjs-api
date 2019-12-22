@@ -1,15 +1,11 @@
 import { prop } from '@typegoose/typegoose';
 import { ApiProperty } from '@nestjs/swagger';
 
-class CardContent {
-  front: string;
-  back: string;
-}
-
-export class Card {
+export class User {
   @ApiProperty()
   @prop({ required: true })
-  title!: string;
+  username: string;
 
-  content?: CardContent;
+  @prop({ required: true })
+  password: string;
 }

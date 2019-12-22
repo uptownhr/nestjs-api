@@ -1,8 +1,8 @@
 import { Module } from '@nestjs/common';
 import { TypegooseModule } from 'nestjs-typegoose';
-import { Card } from './Card.model';
-import { CardController } from './Card.controller';
-import { CardService } from './Card.service';
+import { Card } from './card.model';
+import { CardController } from './card.controller';
+import { CardService } from './card.service';
 
 @Module({
   imports: [TypegooseModule.forFeature([Card])],

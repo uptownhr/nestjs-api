@@ -1,6 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { InjectModel } from 'nestjs-typegoose';
-import { Card } from './Card.model';
+import { Card } from './card.model';
 import { ReturnModelType } from '@typegoose/typegoose';
 
 @Injectable()

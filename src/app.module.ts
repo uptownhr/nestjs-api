@@ -1,11 +1,10 @@
 import { Module } from '@nestjs/common';
 import { TypegooseModule } from 'nestjs-typegoose';
 
-import { AppController } from './app.controller';
-import { AppService } from './app.service';
-
-import { TodoModule } from './modules/Todo/Todo.module';
-import { CardModule } from './modules/Card/Card.module';
+import { TodoModule } from './todo/todo.module';
+import { CardModule } from './card/card.module';
+import { AuthModule } from './auth/auth.module';
+import { UserModule } from './user/user.module';
 
 @Module({
   imports: [
@@ -13,10 +12,10 @@ import { CardModule } from './modules/Card/Card.module';
       useNewUrlParser: true
     }),
     TodoModule,
-    CardModule
-  ],
-  controllers: [AppController],
-  providers: [AppService],
+    CardModule,
+    UserModule,
+    AuthModule,
+  ]
 })
 
 export class AppModule {}

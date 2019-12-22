@@ -1,5 +1,5 @@
-import { Controller, Get, Post, Body } from '@nestjs/common';
-import { TodoService, Todo } from './Todo.service';
+import { Controller, Get, Post, Body, UseGuards } from '@nestjs/common';
+import { TodoService, Todo } from './todo.service';
 import { ApiTags, ApiOkResponse } from '@nestjs/swagger';
 
 @ApiTags('todos')

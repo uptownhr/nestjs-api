@@ -2,9 +2,9 @@ import { MongoMemoryServer } from 'mongodb-memory-server';
 import { TypegooseModule } from 'nestjs-typegoose';
 import { Test, TestingModule } from '@nestjs/testing';
 
-import { CardController } from './Card.controller';
-import { CardService } from './Card.service';
-import { Card } from './Card.model';
+import { CardController } from './card.controller';
+import { CardService } from './card.service';
+import { Card } from './card.model';
 
 describe('TodoController', () => {
   let app: TestingModule;
@@ -34,7 +34,7 @@ describe('TodoController', () => {
   }, 20000);
 
   describe('create', () => {
-    it('should create a Card', async () => {
+    it('should create a card', async () => {
       const card = {
         title: 'did you get this?',
       };

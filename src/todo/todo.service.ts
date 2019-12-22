@@ -1,6 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { InjectModel } from 'nestjs-typegoose';
-import { Todo } from './Todo.model';
+import { Todo } from './todo.model';
 import { ReturnModelType } from '@typegoose/typegoose';
 
 @Injectable()

@@ -1,5 +1,5 @@
 import { Controller, Get, Post, Body } from '@nestjs/common';
-import { CardService, Card } from './Card.service';
+import { CardService, Card } from './card.service';
 import { ApiTags } from '@nestjs/swagger';
 
 @ApiTags('todos')
