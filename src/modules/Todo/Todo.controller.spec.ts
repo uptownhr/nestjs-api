@@ -6,6 +6,7 @@ import { Todo } from './Todo.model';
 import { MongoMemoryServer } from 'mongodb-memory-server';
 
 describe('TodoController', () => {
+  let app: TestingModule;
   let appController: TodoController;
 
   beforeAll(async () => {
@@ -17,7 +18,7 @@ describe('TodoController', () => {
 
     const DB_URI = await mongod.getConnectionString();
 
-    const app: TestingModule = await Test.createTestingModule({
+    app = await Test.createTestingModule({
       imports: [
         TypegooseModule.forFeature([Todo]),
         TypegooseModule.forRoot(DB_URI, {
@@ -53,5 +54,9 @@ describe('TodoController', () => {
 
       expect(res.length).toBeGreaterThan(0);
     });
+  });
+
+  afterAll( async () => {
+    await app.close();
   });
 });

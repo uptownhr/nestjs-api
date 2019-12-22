@@ -7,9 +7,6 @@ import { ApiTags, ApiOkResponse } from '@nestjs/swagger';
 export class TodoController {
   constructor(private readonly TodosService: TodoService) {}
 
-  @ApiOkResponse({
-    type: [Todo]
-  })
   @Get()
   async getTodos(): Promise<Todo[] | null> {
     return await this.TodosService.findAll();
