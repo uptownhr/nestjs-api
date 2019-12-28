@@ -1,10 +1,12 @@
 import { MongoMemoryServer } from 'mongodb-memory-server';
 import { TypegooseModule } from 'nestjs-typegoose';
 import { Test, TestingModule } from '@nestjs/testing';
+import { Types } from 'mongoose';
 
 import { CardController } from './card.controller';
 import { CardService } from './card.service';
 import { Card } from './card.model';
+import { CardUser } from './card.user.model';
 
 describe('TodoController', () => {
   let app: TestingModule;
@@ -21,7 +23,7 @@ describe('TodoController', () => {
 
     app = await Test.createTestingModule({
       imports: [
-        TypegooseModule.forFeature([Card]),
+        TypegooseModule.forFeature([Card, CardUser]),
         TypegooseModule.forRoot(DB_URI, {
           useNewUrlParser: true,
         }),
@@ -47,13 +49,31 @@ describe('TodoController', () => {
 
   describe('getCards', () => {
     it('should return Cards', async () => {
+      const res = await cardController.getCards();
+
+      expect(res.length).toBeGreaterThan(0);
+    });
+  });
+
+  describe('addCardUser', () => {
+    it('should create CardUser', async () => {
       const card = {
         title: 'did you get this?',
       };
 
-      const res = await cardController.getCards();
+      const c1 = await cardController.create(card);
 
-      expect(res.length).toBeGreaterThan(0);
+      const userId = Types.ObjectId()
+      const cardUser = {
+        user: userId,
+        card: c1.id.toString()
+      };
+
+      const res = await cardController.addCardUser(cardUser);
+
+      expect(res.card.toString()).toBe(cardUser.card);
+      expect(res.user.toString()).toBe(userId.toString());
+
     });
   });
 
