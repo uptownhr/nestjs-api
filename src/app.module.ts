@@ -13,8 +13,7 @@ const mongoConnectionUrl = process.env.NODE_ENV === 'production'
 @Module({
   imports: [
     TypegooseModule.forRoot(mongoConnectionUrl, {
-      useNewUrlParser: true,
-      useUnifiedTopology: process.env.NODE_ENV === 'production'
+      useNewUrlParser: true
     }),
     TodoModule,
     CardModule,
