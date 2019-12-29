@@ -1,6 +1,5 @@
 import { index, prop, Ref } from '@typegoose/typegoose';
 import { ApiProperty } from '@nestjs/swagger';
-import { Schema } from 'mongoose';
 import { User } from '../user/user.model';
 import { Card } from './card.model';
 
