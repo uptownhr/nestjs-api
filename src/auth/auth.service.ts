@@ -3,6 +3,8 @@ import { UserService, User } from '../user/user.service';
 import { JwtService } from '@nestjs/jwt';
 import { DocumentType } from '@typegoose/typegoose';
 
+import {IAuthToken} from './constants';
+
 @Injectable()
 export class AuthService {
   constructor(
@@ -20,7 +22,7 @@ export class AuthService {
   }
 
   async login(user: DocumentType<User>) {
-    const payload = {
+    const payload: IAuthToken = {
       username: user.username,
       _id: user._id
     };

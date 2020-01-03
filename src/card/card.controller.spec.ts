@@ -63,7 +63,7 @@ describe('TodoController', () => {
 
       const c1 = await cardController.create(card);
 
-      const userId = Types.ObjectId()
+      const userId = Types.ObjectId();
       const cardUser = {
         user: userId,
         card: c1.id.toString()
@@ -72,6 +72,30 @@ describe('TodoController', () => {
       const res = await cardController.addCardUser(cardUser);
 
       expect(res.card.toString()).toBe(cardUser.card);
+      expect(res.user.toString()).toBe(userId.toString());
+
+    });
+  });
+
+  describe('selfAddCardUser', () => {
+    it('should create CardUser for currentUser', async () => {
+      const card = {
+        title: 'did you get this?',
+      };
+
+      const c1 = await cardController.create(card);
+
+      const userId = Types.ObjectId();
+      const currentUser = {
+        _id: userId.toString(),
+        username: 'testing'
+      };
+
+      const cardId = c1._id.toString();
+
+      const res = await cardController.selfAddCardUser(cardId, currentUser);
+
+      expect(res.card.toString()).toBe(cardId);
       expect(res.user.toString()).toBe(userId.toString());
 
     });
