@@ -32,4 +32,10 @@ export class CardController {
   async selfAddCardUser(@Body() cardId: string, @CurrentUser() currentUser: ICurrentUser): Promise<CardUser> {
     return this.cardService.addCardUser(currentUser._id, cardId);
   }
+
+  @UseGuards(AuthGuard('jwt'))
+  @Post('self/cards')
+  async selfGetCards(@CurrentUser() currentUser: ICurrentUser): Promise<Array<DocumentType<Card>>> {
+    return this.cardService.cardsByUserId(currentUser._id);
+  }
 }

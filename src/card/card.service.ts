@@ -17,8 +17,9 @@ export class CardService {
     return await createdTodo.save();
   }
 
-  async findAll(): Promise<Card[] | null> {
-    return await this.CardModel.find().exec();
+  async findAll(): Promise<Array<DocumentType<Card>> | null> {
+    return await this.CardModel
+      .find();
   }
 
   async addCardUser(userId, cardId): Promise<CardUser> {
@@ -28,6 +29,15 @@ export class CardService {
     });
 
     return cardUser;
+  }
+
+  async cardsByUserId(userId): Promise<Array<DocumentType<Card>>> {
+    const userCards = await this.CardUserModel.find({user: userId})
+      .populate('card');
+
+    const cards = userCards.map(uc => uc.card as DocumentType<Card>)
+
+    return cards;
   }
 }
 

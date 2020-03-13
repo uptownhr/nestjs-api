@@ -97,7 +97,31 @@ describe('TodoController', () => {
 
       expect(res.card.toString()).toBe(cardId);
       expect(res.user.toString()).toBe(userId.toString());
+    });
+  });
 
+  describe('selfGetCards', () => {
+    it('should return Cards for auth User', async () => {
+      const card = {
+        title: 'did you get this?',
+      };
+
+      const c1 = await cardController.create(card);
+
+      const userId = Types.ObjectId();
+      const currentUser = {
+        _id: userId.toString(),
+        username: 'testing'
+      };
+
+      const cardId = c1._id.toString();
+
+      await cardController.selfAddCardUser(cardId, currentUser);
+
+      const res = await cardController.selfGetCards(currentUser);
+
+      expect(res.length).toBeGreaterThan(0);
+      expect(res[0]._id.toString()).toBe(cardId);
     });
   });
 
