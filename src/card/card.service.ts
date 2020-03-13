@@ -33,10 +33,10 @@ export class CardService {
 
   async cardsByUserId(userId): Promise<Array<DocumentType<Card>>> {
     const userCards = await this.CardUserModel.find({user: userId})
-      .populate('card')
+      .populate('card');
 
     const cards = userCards
-      .map(uc => uc.card as DocumentType<Card>)
+      .map(uc => uc.card as DocumentType<Card>);
 
     return cards;
   }

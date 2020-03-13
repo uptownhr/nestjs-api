@@ -14,8 +14,7 @@
     "interface-name": [false],
     "arrow-parens": false,
     "object-literal-sort-keys": false,
-    "trailing-comma": false,
-    "variable-name": false
+    "trailing-comma": false
   },
   "rulesDirectory": []
 }
