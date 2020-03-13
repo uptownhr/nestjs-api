@@ -91,7 +91,7 @@ describe('TodoController', () => {
         username: 'testing'
       };
 
-      const cardId = c1._id.toString();
+      const cardId = c1.id.toString();
 
       const res = await cardController.selfAddCardUser(cardId, currentUser);
 
@@ -121,7 +121,7 @@ describe('TodoController', () => {
       const res = await cardController.selfGetCards(currentUser);
 
       expect(res.length).toBeGreaterThan(0);
-      expect(res[0]._id.toString()).toBe(cardId);
+      expect(res[0].id.toString()).toBe(cardId);
     });
   });
 

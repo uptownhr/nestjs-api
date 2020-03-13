@@ -34,8 +34,8 @@ export class CardController {
   }
 
   @UseGuards(AuthGuard('jwt'))
-  @Post('self/cards')
-  async selfGetCards(@CurrentUser() currentUser: ICurrentUser): Promise<Array<DocumentType<Card>>> {
+  @Get('self/cards')
+  async selfGetCards(@CurrentUser() currentUser: ICurrentUser): Promise<Card[]> {
     return this.cardService.cardsByUserId(currentUser._id);
   }
 }
